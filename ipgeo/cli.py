@@ -1,7 +1,7 @@
 """Console script for ipgeo."""
 import argparse
 import sys
-from ipgeo import APIrequest
+from ipgeo.ipgeo import ipGeoUrl
 
 
 def main():
@@ -22,7 +22,7 @@ def main():
     print("Replace this message by putting your code into " "ipgeo.cli.main")
 
     print(args)
-    APIrequest(args)
+    ipGeoUrl(args)
 
     return 0
 

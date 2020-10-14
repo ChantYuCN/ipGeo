@@ -1,10 +1,10 @@
 """Main module."""
 from urllib.request import urlopen
 import json
+"""access the url and response the json for geo by giving ip, and out to a text file"""
 
 
-"""access the url and response the json for geo by giving ip"""
-def APIrequest(ipaddr):
+def ipGeoUrl(ipaddr):
     urlIpGeo = 'http://ip-api.com/json/'
     if ipaddr.ip:
         """Temporary"""
@@ -13,10 +13,14 @@ def APIrequest(ipaddr):
     try:
         resp = urlopen(urlIpGeo).read().decode('UTF-8')
         json_obj = json.loads(resp)
-        return json_obj
     except Exception as e:
         print(e)
         return 1
+    json_doc = json.dumps(json_obj)
+    filename = 'location.json'
+    with open(filename, 'w') as f:
+        f.write(json_doc)
+        f.close()
 
 
 # This is a new line that ends the file.
